@@ -10,12 +10,16 @@ const Registration = ({ handleSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
+        <Form.Label>Name</Form.Label>
+        <Field type="text" name="name" component={Input} placeholder="John Smith" validate={registrationFormValidations.name} />
+      </Form.Group>
+      <Form.Group>
         <Form.Label>Email Address</Form.Label>
         <Field type="text" name="email" component={Input} placeholder="someone@somewhere.com" validate={registrationFormValidations.email} />
       </Form.Group>
       <Form.Group>
         <Form.Label>Username</Form.Label>
-        <Field type="text" name="username" component={Input} placeholder="whatever99" validate={registrationFormValidations.username} />
+        <Field type="text" name="username" component={Input} placeholder="whiskeylover2" validate={registrationFormValidations.username} />
       </Form.Group>
       <Form.Group>
         <Form.Label>Password</Form.Label>
