@@ -7,22 +7,21 @@ import Form from '../../Forms/Form';
 
 import { ModalContainer } from './styles';
 
-const LoginRegister = () => {
+const LoginRegister = ({ submitRegistrationForm }) => {
   const [currentTab, setCurrentTab] = useState('login');
 
-  const submitRegistrationForm = values => {
-    // This is broken...  WHY?!
+  const submitRegistrationFormHandler = values => {
     submitRegistrationForm(values);
   }
 
-  const submitLoginForm = values => {
+  const submitLoginFormHandler = values => {
     console.log(values);
   }
 
   return (
     <ModalContainer>
       <div className="form-container">
-        <Form slug={currentTab} onSubmit={currentTab === 'registration' ? submitRegistrationForm : submitLoginForm} />
+        <Form slug={currentTab} onSubmit={currentTab === 'registration' ? submitRegistrationFormHandler : submitLoginFormHandler} />
       </div>
       {
         currentTab === 'login' ?
