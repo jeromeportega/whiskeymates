@@ -30,8 +30,4 @@ const Registration = ({ handleSubmit }) => {
   );
 }
 
-export const submit = (data) => {
-  console.log(data);
-}
-
 export default Registration;

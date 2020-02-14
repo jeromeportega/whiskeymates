@@ -22,8 +22,4 @@ const Login = ({ handleSubmit }) => {
   );
 }
 
-export const submit = (data) => {
-  console.log(data);
-}
-
 export default Login;
