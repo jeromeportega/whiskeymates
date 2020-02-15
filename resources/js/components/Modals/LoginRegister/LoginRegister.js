@@ -8,7 +8,7 @@ import Form from '../../Forms/Form';
 import { ModalContainer } from './styles';
 
 const LoginRegister = ({ submitRegistrationForm }) => {
-  const [currentTab, setCurrentTab] = useState('login');
+  const [currentTab, setCurrentTab] = useState('registration');
 
   const submitRegistrationFormHandler = values => {
     submitRegistrationForm(values);

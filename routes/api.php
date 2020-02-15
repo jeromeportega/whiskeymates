@@ -13,11 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::prefix('api')->group(function () {
-    Route::prefix('v1')->group(function () {
-        Route::prefix('user')->group(function () {
-            Route::post('create', 'userController@create');
-        });
+Route::prefix('v1')->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::post('create', 'userController@create');
     });
 });
 

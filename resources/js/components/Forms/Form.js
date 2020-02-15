@@ -8,11 +8,18 @@ const forms = {
   'login': Login,
 }
 
+const registrationInitialValues = {
+  name: 'Jerome Ortega',
+  username: 'jportega87',
+  email: 'jportega87@gmail.com',
+  password: 'password',
+}
+
 const Form = ({ slug, onSubmit }) => {
   const Component = forms[slug];
 
   return (
-    <FormContainer onSubmit={onSubmit} render={Component} />
+    <FormContainer onSubmit={onSubmit} render={Component} initialValues={slug === 'registration' ? registrationInitialValues : {}} />
   );
 }
 
