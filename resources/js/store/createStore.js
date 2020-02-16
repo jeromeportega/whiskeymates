@@ -11,11 +11,10 @@ export default (initialState) => {
   const store = createStore(
     combineReducers(reducers),
     initialState,
-    applyMiddleware(sagaMiddleware),
+    composeWithDevTools(applyMiddleware(sagaMiddleware)),
   );
 
   sagaMiddleware.run(sagas);
-  composeWithDevTools();
 
   return store;
 };

@@ -12,7 +12,7 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCreateUser()
+    public function testRegisterNewUser()
     {
         $user = factory(User::class)->make();
 
@@ -25,8 +25,8 @@ class UserTest extends TestCase
 
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonStructure([
-            'created',
             'api_token',
+            'message',
         ]);
     }
 }

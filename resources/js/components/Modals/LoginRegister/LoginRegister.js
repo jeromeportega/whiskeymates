@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { submitRegistrationForm } from '../../../actions/user';
+import { submitRegistrationForm, submitLoginForm } from '../../../actions/user';
 
 import Form from '../../Forms/Form';
 
 import { ModalContainer } from './styles';
 
-const LoginRegister = ({ submitRegistrationForm }) => {
-  const [currentTab, setCurrentTab] = useState('registration');
+const LoginRegister = ({ submitRegistrationForm, submitLoginForm }) => {
+  const [currentTab, setCurrentTab] = useState('login');
 
   const submitRegistrationFormHandler = values => {
     submitRegistrationForm(values);
   }
 
   const submitLoginFormHandler = values => {
-    console.log(values);
+    submitLoginForm(values);
   }
 
   return (
@@ -35,4 +35,5 @@ const LoginRegister = ({ submitRegistrationForm }) => {
 
 export default connect(null, {
   submitRegistrationForm,
+  submitLoginForm,
 })(LoginRegister);
