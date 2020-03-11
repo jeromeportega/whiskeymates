@@ -6,7 +6,7 @@ import { saveUserDataToStore } from '../../actions/user';
 export default function* submitRegistrationFormSaga({ payload }) {
   try {
     const response = yield call(axios.post, `${process.env.MIX_API_URL}/user/create`, {
-      ...payload,
+      ...payload.values,
     }, {
       headers: {
         Accept: 'application/json',
@@ -19,6 +19,9 @@ export default function* submitRegistrationFormSaga({ payload }) {
       } else {
         yield put(saveUserDataToStore(response.data.user));
       }
+
+      payload.setIsSubmitting(false);
+      payload.closeModal();
     }
   } catch (e) {
     console.log(e);

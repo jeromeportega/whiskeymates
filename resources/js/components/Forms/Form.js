@@ -8,11 +8,11 @@ const forms = {
   'login': Login,
 }
 
-const Form = ({ slug, onSubmit }) => {
+const Form = ({ slug, onSubmit, isSubmitting }) => {
   const Component = forms[slug];
 
   return (
-    <FormContainer onSubmit={onSubmit} render={Component} />
+    <FormContainer onSubmit={onSubmit} render={Component} isSubmitting={isSubmitting} />
   );
 }
 

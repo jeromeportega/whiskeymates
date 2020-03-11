@@ -8,7 +8,7 @@ const Home = () => {
     setShowLoginRegisterModal(true);
   }
 
-  const loginRegisterModalHideHandler = () => {
+  const closeLoginRegisterModal = () => {
     setShowLoginRegisterModal(false)
   }
 
@@ -16,7 +16,7 @@ const Home = () => {
     <div>
       <h1>Welcome to Whiskeymates!</h1>
       <button onClick={loginButtonClickHandler}>Login</button>
-      <ModalContainer slug='login-register' show={showLoginRegisterModal} onHide={loginRegisterModalHideHandler} />
+      <ModalContainer slug='login-register' show={showLoginRegisterModal} onHide={closeLoginRegisterModal} closeModal={closeLoginRegisterModal} />
     </div>
   );
 }

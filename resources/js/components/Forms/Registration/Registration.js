@@ -6,7 +6,7 @@ import registrationFormValidations from './validations';
 
 import Input from '../Fields/Input';
 
-const Registration = ({ handleSubmit }) => {
+const Registration = ({ handleSubmit, isSubmitting }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -25,7 +25,7 @@ const Registration = ({ handleSubmit }) => {
         <Form.Label>Password</Form.Label>
         <Field type="password" name="password" component={Input} placeholder="Pick something secure!" validate={registrationFormValidations.password} />
       </Form.Group>
-      <Button type='submit'>Register</Button>
+      <Button type='submit' disabled={isSubmitting}>{isSubmitting ? 'Loading...' : 'Register'}</Button>
     </Form>
   );
 }

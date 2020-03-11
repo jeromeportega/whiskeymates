@@ -1,35 +1,56 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Modal } from 'react-bootstrap';
+import axios from 'axios';
 
 import { submitRegistrationForm, submitLoginForm } from '../../../actions/user';
 
 import Form from '../../Forms/Form';
 
-import { ModalContainer } from './styles';
+import { ModalContentsContainer } from './styles';
 
-const LoginRegister = ({ submitRegistrationForm, submitLoginForm }) => {
+const LoginRegister = ({
+  submitRegistrationForm,
+  submitLoginForm,
+  show,
+  onHide,
+  closeModal,
+}) => {
   const [currentTab, setCurrentTab] = useState('login');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submitRegistrationFormHandler = values => {
-    submitRegistrationForm(values);
-  }
+  const submitFormHandler = values => {
+    setIsSubmitting(true);
 
-  const submitLoginFormHandler = values => {
-    submitLoginForm(values);
+    if (currentTab === 'registration') {
+      submitRegistrationForm({
+        values,
+        setIsSubmitting,
+        closeModal,
+      });
+    } else {
+      submitLoginForm({
+        values,
+        setIsSubmitting,
+        closeModal,
+      });
+    }
   }
 
   return (
-    <ModalContainer>
-      <div className="form-container">
-        <Form slug={currentTab} onSubmit={currentTab === 'registration' ? submitRegistrationFormHandler : submitLoginFormHandler} />
-      </div>
-      {
-        currentTab === 'login' ?
-          <a href="#" onClick={() => setCurrentTab('registration')}>Not a member yet? Register now!</a>
-        :
-          <a href="#" onClick={() => setCurrentTab('login')}>Already a member? Log in!</a>
-      }
-    </ModalContainer>
+    <Modal show={show} onHide={onHide}>
+      <ModalContentsContainer>
+        <div className="form-container">
+          <Form slug={currentTab} onSubmit={submitFormHandler} isSubmitting={isSubmitting} />
+        </div>
+        {
+          currentTab === 'login' ?
+            <a href="#" onClick={() => setCurrentTab('registration')}>Not a member yet? Register now!</a>
+          :
+            <a href="#" onClick={() => setCurrentTab('login')}>Already a member? Log in!</a>
+        }
+      </ModalContentsContainer>
+    </Modal>
   );
 }
 
