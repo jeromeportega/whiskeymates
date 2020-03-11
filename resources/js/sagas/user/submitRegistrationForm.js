@@ -1,5 +1,6 @@
 import { put, call } from 'redux-saga/effects';
 import axios from 'axios';
+import { push } from 'connected-react-router';
 
 import { saveUserDataToStore } from '../../actions/user';
 
@@ -22,6 +23,7 @@ export default function* submitRegistrationFormSaga({ payload }) {
 
       payload.setIsSubmitting(false);
       payload.closeModal();
+      yield put(push('/dashboard'));
     }
   } catch (e) {
     console.log(e);
