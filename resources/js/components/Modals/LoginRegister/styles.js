@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalContainer = styled.div`
+export const ModalContentsContainer = styled.div`
   padding: 20px;
 
   .form-container {

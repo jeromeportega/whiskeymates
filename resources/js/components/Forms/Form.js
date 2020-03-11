@@ -1,24 +1,18 @@
 import React from 'react';
 import { Form as FormContainer } from 'react-final-form';
-import Registration, { submit as registrationSubmit } from './Registration/Registration';
-import Login, { submit as loginSubmit } from './Login/Login';
+import Registration from './Registration/Registration';
+import Login from './Login/Login';
 
 const forms = {
-  'registration': {
-    Component: Registration,
-    onSubmit: registrationSubmit,
-  },
-  'login': {
-    Component: Login,
-    onSubmit: loginSubmit,
-  }
+  'registration': Registration,
+  'login': Login,
 }
 
-const Form = ({ slug }) => {
-  const selectedForm = forms[slug];
+const Form = ({ slug, onSubmit, isSubmitting = false }) => {
+  const Component = forms[slug];
 
   return (
-    <FormContainer onSubmit={selectedForm.onSubmit} render={selectedForm.Component} /> 
+    <FormContainer onSubmit={onSubmit} render={Component} isSubmitting={isSubmitting} />
   );
 }
 

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Whiskey;
 use Illuminate\Http\Request;
+
+use App\Whiskey;
 
 class WhiskeyController extends Controller
 {
