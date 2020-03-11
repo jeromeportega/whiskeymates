@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
-import axios from 'axios';
 
 import { submitRegistrationForm, submitLoginForm } from '../../../actions/user';
 
