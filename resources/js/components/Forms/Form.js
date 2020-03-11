@@ -8,7 +8,7 @@ const forms = {
   'login': Login,
 }
 
-const Form = ({ slug, onSubmit, isSubmitting }) => {
+const Form = ({ slug, onSubmit, isSubmitting = false }) => {
   const Component = forms[slug];
 
   return (

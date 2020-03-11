@@ -1,14 +1,13 @@
 import { put, call } from 'redux-saga/effects';
 import axios from 'axios';
+import { push } from 'connected-react-router';
 
 import { saveUserDataToStore } from '../../actions/user';
 
-export default function* submitLoginFormSaga({ payload }) {
-  console.log(payload);
-
+export default function* submitRegistrationFormSaga({ payload }) {
   try {
     const response = yield call(axios.post, `${process.env.MIX_API_URL}/user/login`, {
-      ...payload,
+      ...payload.values,
     }, {
       headers: {
         Accept: 'application/json',
@@ -21,8 +20,13 @@ export default function* submitLoginFormSaga({ payload }) {
       } else {
         yield put(saveUserDataToStore(response.data.user));
       }
+
+      payload.setIsSubmitting(false);
+      payload.closeModal();
+      yield put(push('/dashboard'));
     }
   } catch (e) {
     console.log(e);
   }
 }
+

@@ -6,7 +6,7 @@ import loginFormValidations from './validations';
 
 import Input from '../Fields/Input';
 
-const Login = ({ handleSubmit }) => {
+const Login = ({ handleSubmit, isSubmitting }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -17,7 +17,7 @@ const Login = ({ handleSubmit }) => {
         <Form.Label>Password</Form.Label>
         <Field type="password" name="password" component={Input} placeholder="Pick something secure!" validate={loginFormValidations.password} />
       </Form.Group>
-      <Button type='submit'>Log In!</Button>
+      <Button type='submit' disabled={isSubmitting}>{isSubmitting ? 'Loading...' : 'Log In'}</Button>
     </Form>
   );
 }
