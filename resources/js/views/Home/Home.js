@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalContainer from '../../components/Modals/ModalContainer'
+import ModalContainer from '../../components/Modals/ModalContainer';
 
 const Home = () => {
   const [showLoginRegisterModal, setShowLoginRegisterModal] = useState(false);
@@ -9,7 +9,7 @@ const Home = () => {
   }
 
   const closeLoginRegisterModal = () => {
-    setShowLoginRegisterModal(false)
+    setShowLoginRegisterModal(false);
   }
 
   return (

@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-const Dashboard = () => {
+import WhiskeyList from './WhiskeyList/WhiskeyList';
+import ModalContainer from '../../components/Modals/ModalContainer';
+
+import { DashboardContainer } from './styles';
+
+const Dashboard = ({
+  whiskies,
+}) => {
+  const [showAddWhiskeyModal, setShowAddWhiskeyModal] = useState(false);
+    
   return (
-    <div>This is your dashboard.</div>
+    <DashboardContainer>
+      <h1>Jerry's Whiskey List</h1>
+      {
+        whiskies.length > 0 ?
+          <WhiskeyList whiskies={whiskies} />
+        :
+          <h3>You have no whiskies yet!  <a href="#" onClick={() => setShowAddWhiskeyModal(true)}>Add one now!</a></h3>
+      }
+      <ModalContainer
+        slug='add-whiskey'
+        show={showAddWhiskeyModal}
+        onHide={() => setShowAddWhiskeyModal(false)}
+        closeModal={() => setShowAddWhiskeyModal(false)}
+      />
+    </DashboardContainer>
   );
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  whiskies: state.whiskies || [],
+});
+
+export default connect(mapStateToProps)(Dashboard);
