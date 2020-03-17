@@ -36,7 +36,6 @@ const AddWhiskey = ({ handleSubmit, isSubmitting }) => {
           name="barrel"
           component={Input}
           placeholder="Port"
-          validate={addWhiskeyValidations.barrel}
         />
       </Form.Group>
       <Form.Group>

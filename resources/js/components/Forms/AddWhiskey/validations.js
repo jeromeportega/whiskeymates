@@ -1,10 +1,5 @@
 export default {
-  email: value => {
-    if (!value) {
-      return 'Email address is required.';
-    } else if (!emailRegex.test(value)) {
-      return 'Email address is invalid.';
-    }
-  },
-  password: value => value ? undefined : 'Password is required.',
+  distillery: value => value ? undefined : 'Distillery is required.',
+  age: value => value ? (value < 300 ? undefined : 'Age needs to be less than 300 years.') : undefined,
+  type: value => value ? undefined : 'Type is required.',
 }
