@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Whiskey;
+use Illuminate\Http\Response;
 
 class WhiskeyController extends Controller
 {
@@ -36,7 +37,9 @@ class WhiskeyController extends Controller
             'barrel' => $validated['barrel'],
         ]);
 
-        return response()->json('Whiskey created!');
+        return response()->json([
+            'message' => 'Whiskey created',
+        ], Response::HTTP_OK);
     }
 
     /**
