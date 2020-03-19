@@ -6,12 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Register;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\User;
-use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
+
+    /**
+     * Returns the currently logged in user.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function get(Request $request)
+    {
+        return response()->json([
+            'user' => $request->user(),
+        ], Response::HTTP_OK);
+    }
 
     /**
      * Creates a new user.

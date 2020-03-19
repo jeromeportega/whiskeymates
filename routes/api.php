@@ -18,8 +18,12 @@ Route::prefix('v1')->group(function () {
         Route::post('create', 'API\UserController@create');
         Route::post('login', 'API\Auth\LoginController@login');
     });
-});
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::prefix('user')->group(['middleware' => ['auth:api']], function () {
+        Route::get('', 'API\UserController@index');
+    });
+
+    Route::prefix('whiskey')->group(['middleware' => ['auth:api']], function () {
+        Route::post('', 'API\WhiskeyController@create');
+    });
 });
