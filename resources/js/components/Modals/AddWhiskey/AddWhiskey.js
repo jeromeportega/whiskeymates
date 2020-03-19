@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 
-import { submitAddWhiskeyForm } from '../../../actions/whiskey';
+import { submitAddWhiskeyForm as submitAddWhiskeyFormAction } from '../../../actions/whiskey';
 
 import Form from '../../Forms/Form';
 
@@ -36,5 +36,5 @@ const AddWhiskey = ({
 }
 
 export default connect(null, {
-  submitAddWhiskeyForm,
+  submitAddWhiskeyForm: submitAddWhiskeyFormAction,
 })(AddWhiskey);
