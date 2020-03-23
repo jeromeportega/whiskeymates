@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function* submitAddWhiskeyForm({ payload }) {
   try {
-    console.log('sending');
+    
 
     const response = yield call(axios.post, `${process.env.MIX_API_URL}/whiskey`, {
       ...payload.values,

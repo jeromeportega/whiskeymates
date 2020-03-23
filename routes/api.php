@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,11 +17,11 @@ Route::prefix('v1')->group(function () {
         Route::post('login', 'API\Auth\LoginController@login');
     });
 
-    Route::prefix('user')->group(['middleware' => ['auth:api']], function () {
-        Route::get('', 'API\UserController@index');
+    Route::prefix('user')->middleware('auth:api')->group(function () {
+        Route::get('/', 'API\UserController@index');
     });
 
-    Route::prefix('whiskey')->group(['middleware' => ['auth:api']], function () {
-        Route::post('', 'API\WhiskeyController@create');
+    Route::prefix('whiskey')->middleware('auth:api')->group(function () {
+        Route::post('/', 'API\WhiskeyController@create');
     });
 });

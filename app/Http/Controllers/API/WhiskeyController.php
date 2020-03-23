@@ -29,16 +29,22 @@ class WhiskeyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validated();
+        $user = $request->user();
 
-        Whiskey::create([
+        dd($user);
+
+        $whiskey = Whiskey::create([
             'type' => $validated['type'],
             'distillery' => $validated['distillery'],
             'age' => $validated['age'],
             'barrel' => $validated['barrel'],
         ]);
 
+        $user->whiskey()->associate($whiskey);
+        $user->save();
+
         return response()->json([
-            'message' => 'Whiskey created',
+            'whiskey' => $whiskey,
         ], Response::HTTP_OK);
     }
 
