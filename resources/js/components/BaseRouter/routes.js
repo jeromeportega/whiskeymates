@@ -11,5 +11,6 @@ export default [
     path: '/dashboard',
     exact: true,
     component: Dashboard,
+    guarded: true,
   },
 ];
